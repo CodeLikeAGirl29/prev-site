@@ -22,7 +22,7 @@
       &-top {
         padding: 80px 30px 10px 40px;  
         @media (max-width: $breakpoint-xsmall-max) {
-          padding: 80px 15px 10px 15px;  
+          padding: 80px 15px 10px;  
         }
       }
 
@@ -30,7 +30,7 @@
         position: relative;
         padding: 30px 30px 30px 40px;
         @media (max-width: $breakpoint-xsmall-max) {
-          padding: 30px 15px 30px 15px;
+          padding: 30px 15px;
         }
         &::before{
           content: "";

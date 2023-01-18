@@ -64,7 +64,6 @@ html, body {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
   border-bottom: 1px solid #e5e5e5;
 }
 
@@ -345,7 +344,7 @@ html, body {
 
 @media (max-width: 639px) {
   .yb-my-profile-desc-top {
-    padding: 80px 15px 10px 15px;
+    padding: 80px 15px 10px;
   }
 }
 
@@ -356,7 +355,7 @@ html, body {
 
 @media (max-width: 639px) {
   .yb-my-profile-desc-bottom {
-    padding: 30px 15px 30px 15px;
+    padding: 30px 15px;
   }
 }
 
@@ -669,10 +668,8 @@ html, body {
   bottom: -10px;
   margin: 0;
   padding: 5px 16px;
-  font-weight: 700;
   display: block;
   background: #fff;
-  display: block;
   color: #1e87f0;
   border-radius: 0 20px 20px 0;
 }
@@ -1013,42 +1010,6 @@ blockquote {
         position: absolute;
         text-shadow: 3px 0 #c2c2c2;
       }
-
-  .newsletter {
-
-  }
-  .newsletter a::before {
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: -2px;
-    width: calc(100% + 6px);
-    /*100% plus double the times left values*/
-    height: calc(100% - 10px);
-    transition: all 0.5s ease-in-out;
-    transform: scaleY(1);
-  }
-  .newsletter a:hover::before,
-  .newsletter a:hover::before {
-  transform: scaleY(0);
-  }
-
-  .newsletter a::after {
-    content: "";
-    position: absolute;
-    left: 5px;
-    top: -5px;
-    width: calc(100% - 10px);
-    /*100% plus double the times left values*/
-    height: calc(100% + 10px);
-    transition: all 0.5s ease-in-out;
-    transform: scaleX(1);
-  }
-
-  .newsletter a:hover::after,
-.newsletter a:hover::after {
-  transform: scaleX(0);
-}
 
 @media (max-width: 959px) {
   .yb-img-featured {

@@ -6,7 +6,7 @@ This is my personal portfolio. Made by Lindsey. 🎉
 
 ## Screenshots
 
-![App Screenshot](https://res.cloudinary.com/codelikeagirl29/image/upload/v1671707466/projects/vCard-Resume-CV_1_izdp2v.png)
+![App Screenshot](https://res.cloudinary.com/codelikeagirl29/image/upload/v1674077801/projects/lindseyk.dev_1_u0vwbc.png)
 
 
 ## Tech Stack

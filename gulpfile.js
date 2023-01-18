@@ -36,7 +36,7 @@ function getPaths () {
       js: "src/app/js/"
     } 
   }
-};
+}
 
 let paths = getPaths();
  
@@ -94,10 +94,9 @@ function jsbuild(done) {
   .pipe(uglify())
   .pipe(dest("src/app/js"))
   .pipe(browserSync.reload({ stream: true }));
-  done();
 }
 
-function htmlbuild(done) {
+function htmlbuild() {
   return src([ 
     paths.html_master.page
   ])
@@ -107,26 +106,24 @@ function htmlbuild(done) {
         basepath: "@file",
         context: {
           px: "yb",
-          template_name: "Freda",
-          template_desc: "Personal Resume / Portfolio / Blog / HTML Template",
-          createdby: "yobithemes",
-          urlauthor: "https://themeforest.net/user/yobithemes"
+          template_name: "lindseykdev",
+          template_desc: "Personal Resume",
+          createdby: "lindsey k",
+          urlauthor: "https://lindseyk.dev"
         }
       })
     )
     .pipe(dest(paths.root))
     .pipe(browserSync.reload({ stream: true }));
-  done();
 }
 
-function htmlformat(done) {
+function htmlformat() {
   var options =  { "indent_size": 2 };
   return src([ 
     paths.html
   ])
     .pipe( htmlbeautify(options) )
     .pipe(dest(paths.root));
-  done();
 }
  
 exports.css = series(cssbuild);

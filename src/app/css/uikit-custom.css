@@ -234,7 +234,7 @@ pre,
 address,
 fieldset,
 figure {
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
 }
 
 /* Add margin if adjacent element */
@@ -262,7 +262,7 @@ h6, .uk-h6,
 .uk-heading-large,
 .uk-heading-xlarge,
 .uk-heading-2xlarge {
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
   font-family: "Poppins", sans-serif;
   font-weight: normal;
   color: #000;
@@ -367,7 +367,7 @@ hr, .uk-hr {
   /* 2 */
   text-align: inherit;
   /* 3 */
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
   border: 0;
   border-top: 1px solid #e5e5e5;
 }
@@ -387,7 +387,7 @@ address {
 /* Blockquotes
  ========================================================================== */
 blockquote {
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
   font-size: 1.25rem;
   line-height: 1.5;
   font-style: italic;
@@ -423,7 +423,7 @@ blockquote footer::before {
  * 1. Contain overflow in all browsers.
  */
 pre {
-  font: 0.875rem / 1.5 Consolas, monaco, monospace;
+  font: 0.875rem / 1.5 'Consolas', monaco, monospace;
   color: #000;
   -moz-tab-size: 4;
   -o-tab-size: 4;
@@ -437,7 +437,7 @@ pre {
 }
 
 pre code {
-  font-family: Consolas, monaco, monospace;
+  font-family: 'Consolas', monaco, monospace;
 }
 
 /* Selection pseudo-element
@@ -863,7 +863,7 @@ a.uk-link-reset,
  * Striped
  */
 .uk-list-striped > li {
-  padding: 10px 10px;
+  padding: 10px;
 }
 
 .uk-list-striped > li:nth-of-type(odd) {
@@ -1410,8 +1410,6 @@ button.uk-icon:not(:disabled) {
 
 /* IE11 */
 .uk-range::-ms-thumb {
-  /* 1 */
-  border: none;
   /* 2 */
   height: 15px;
   width: 15px;
@@ -1594,8 +1592,6 @@ button.uk-icon:not(:disabled) {
   max-width: 100%;
   /* 2 */
   width: 100%;
-  /* 3 */
-  border: 0 none;
   /* 4 */
   padding: 0 10px;
   background: #fff;
@@ -2148,8 +2144,6 @@ select.uk-form-width-xsmall {
   /* 4 */
   font: inherit;
   color: inherit;
-  /* 5 */
-  text-transform: none;
   /* 6 */
   display: inline-block;
   box-sizing: border-box;
@@ -3226,7 +3220,7 @@ select.uk-form-width-xsmall {
 /* Sections
  ========================================================================== */
 .uk-card-body {
-  padding: 30px 30px;
+  padding: 30px;
 }
 
 .uk-card-header {
@@ -3240,7 +3234,7 @@ select.uk-form-width-xsmall {
 /* Desktop and bigger */
 @media (min-width: 1200px) {
   .uk-card-body {
-    padding: 40px 40px;
+    padding: 40px;
   }
   .uk-card-header {
     padding: 20px 40px;
@@ -3386,7 +3380,7 @@ select.uk-form-width-xsmall {
  */
 .uk-card-small.uk-card-body,
 .uk-card-small .uk-card-body {
-  padding: 20px 20px;
+  padding: 20px;
 }
 
 .uk-card-small .uk-card-header {
@@ -3404,7 +3398,7 @@ select.uk-form-width-xsmall {
 @media (min-width: 1200px) {
   .uk-card-large.uk-card-body,
   .uk-card-large .uk-card-body {
-    padding: 70px 70px;
+    padding: 70px;
   }
   .uk-card-large .uk-card-header {
     padding: 35px 70px;
@@ -3826,7 +3820,7 @@ select.uk-form-width-xsmall {
    Component: Overlay
  ========================================================================== */
 .uk-overlay {
-  padding: 30px 30px;
+  padding: 30px;
 }
 
 /*
@@ -3986,7 +3980,7 @@ select.uk-form-width-xsmall {
  * Note: General sibling selector allows reply block between comment and sublist
  */
 .uk-comment-list .uk-comment ~ ul {
-  margin: 70px 0 0 0;
+  margin: 70px 0 0;
   padding-left: 30px;
   list-style: none;
 }
@@ -5325,7 +5319,7 @@ ul.uk-nav-sub {
 /* Size modifier
  ========================================================================== */
 .uk-slidenav-large {
-  padding: 10px 10px;
+  padding: 10px;
 }
 
 /* Container
@@ -5764,7 +5758,7 @@ ul.uk-nav-sub {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   /* 4 */
-  padding: 15px 15px;
+  padding: 15px;
   /* 5 */
   background: rgba(0, 0, 0, 0.6);
   /* 6 */
@@ -5871,7 +5865,7 @@ ul.uk-nav-sub {
 /* Sections
  ========================================================================== */
 .uk-modal-body {
-  padding: 30px 30px;
+  padding: 30px;
 }
 
 .uk-modal-header {
@@ -6351,7 +6345,7 @@ ul.uk-nav-sub {
   /* 2 */
   box-sizing: border-box;
   width: 270px;
-  padding: 20px 20px;
+  padding: 20px;
   background: #222;
   /* 3 */
   overflow-y: auto;
@@ -6363,7 +6357,7 @@ ul.uk-nav-sub {
   .uk-offcanvas-bar {
     left: -350px;
     width: 350px;
-    padding: 40px 40px;
+    padding: 40px;
   }
 }
 
@@ -6861,7 +6855,7 @@ ul.uk-nav-sub {
  ========================================================================== */
 .uk-placeholder {
   margin-bottom: 20px;
-  padding: 30px 30px;
+  padding: 30px;
   background: transparent;
   border: 1px dashed #e5e5e5;
 }
