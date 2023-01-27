@@ -889,9 +889,11 @@ html, body {
 }
 
 .yb-blog-item-title {
+  font-family: 'PT Sans', sans-serif;
   color: #fff;
   font-weight: 700;
   margin-bottom: 10px;
+  line-height: 1.1;
 }
 
 .yb-blog-item .uk-position-bottom, .yb-blog-item .uk-position-top {
@@ -899,7 +901,7 @@ html, body {
 }
 
 .yb-blog-item:hover {
-  transform: scale(0.96);
+  transform: scale(1.1);
 }
 
 .yb-blog-item:hover .uk-position-top {
@@ -911,8 +913,8 @@ html, body {
 }
 
 .yb-blog-item .uk-badge {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-weight: 700;
   font-size: 12px;
 }
