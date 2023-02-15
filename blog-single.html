@@ -343,9 +343,9 @@
           </div>
           <div class="uk-width-1-4@m yb-section-padding">
             <div class="yb-sidebar-item">
-              <form class="uk-search uk-search-default uk-width-1-1">
+              <form class="uk-search uk-search-default uk-width-1-1" id="form" role="search">
                 <span data-uk-search-icon></span>
-                <input class="uk-search-input " type="search" placeholder="Search...">
+                <input class="uk-search-input" id="query" name="q" type="search" placeholder="Search..." aria-label="Search through site content">
               </form>
             </div>
             <div class="yb-sidebar-item">
@@ -456,6 +456,22 @@
       </div>
     </div>
   </footer><!-- end main footer -->
+  
+  <script>
+    const f = document.getElementById('form');
+const q = document.getElementById('query');
+const google = 'https://www.google.com/search?q=site%3A+';
+const site = 'lindseyk.dev';
+
+function submitted(event) {
+  event.preventDefault();
+  const url = google + site + '+' + q.value;
+  const win = window.open(url, '_blank');
+  win.focus();
+}
+
+f.addEventListener('submit', submitted);
+  </script>
 
   <!-- js -->
   <script src="src/app/js/plugins.min.js"></script>
