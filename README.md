@@ -2,7 +2,7 @@
 
 This is my personal portfolio. Made by Lindsey. 🎉
 
-[![CodeFactor](https://www.codefactor.io/repository/github/codelikeagirl29/lindseykdev/badge/main)](https://www.codefactor.io/repository/github/codelikeagirl29/lindseykdev/overview/main)
+[![CodeFactor](https://www.codefactor.io/repository/github/codelikeagirl29/prev-site/badge)](https://www.codefactor.io/repository/github/codelikeagirl29/prev-site)
 
 ## Screenshots
 
