@@ -1393,7 +1393,6 @@ button.uk-icon:not(:disabled) {
 /* Firefox */
 .uk-range::-moz-range-thumb {
   /* 1 */
-  border: none;
   /* 2 */
   height: 15px;
   width: 15px;
@@ -6074,7 +6073,7 @@ ul.uk-nav-sub {
 /* Toolbar
  ========================================================================== */
 .uk-lightbox-toolbar {
-  padding: 10px 10px;
+  padding: 10px;
   background: rgba(0, 0, 0, 0.3);
   color: rgba(255, 255, 255, 0.7);
 }
