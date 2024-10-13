@@ -1,133 +1,57 @@
-"use strict";
-const { task, src, dest, watch, parallel, series } = require("gulp");
+const gulp = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const cleanCSS = require('gulp-clean-css');
+const rename = require('gulp-rename');
+const htmlmin = require('gulp-htmlmin');
+const browserSync = require('browser-sync').create();
 
-const sass = require("gulp-sass");
-const fileinclude = require("gulp-file-include");
-const browserSync = require("browser-sync").create();
-const autoprefixer = require("gulp-autoprefixer");
-const csso = require("gulp-csso");
-const rename = require("gulp-rename");
-const concat = require("gulp-concat");
-const sourcemaps = require("gulp-sourcemaps");
-const htmlbeautify = require("gulp-html-beautify");
-const uglify = require('gulp-uglify');
-
-var sassOptions = {
-  outputStyle: "expanded"
+// Paths to your files
+const paths = {
+  styles: {
+    src: 'src/app/scss/**/*.scss',
+    dest: 'dist/css/'
+  },
+  html: {
+    src: '/*.html',
+    dest: 'dist/'
+  }
 };
 
-
-
-function getPaths () {
-  return {
-    root: './',
-    root_npm:'node_modules/',
-    html : "*.html",
-    js : "src/js/app.js", 
-    html_master : {
-      page: "src/html-master/html-page/**/*.html",
-      partial: "src/html-master/html-partial/**/*.html"
-    },
-    scss: { 
-      all: 'src/app/scss/**/*.scss', 
-    },
-    dest : {
-      css: "src/app/css/",
-      js: "src/app/js/"
-    } 
-  }
+// Compile SCSS to CSS, then minify CSS
+function styles() {
+  return gulp.src(paths.styles.src)
+    .pipe(sass().on('error', sass.logError)) // Compile SCSS to CSS
+    .pipe(cleanCSS()) // Minify the CSS
+    .pipe(rename({ suffix: '.min' })) // Rename the output file
+    .pipe(gulp.dest(paths.styles.dest)) // Output the CSS to destination folder
+    .pipe(browserSync.stream()); // Stream changes to BrowserSync
 }
 
-let paths = getPaths();
- 
-function browser(done) {
+// Minify HTML
+function minifyHTML() {
+  return gulp.src(paths.html.src)
+    .pipe(htmlmin({ collapseWhitespace: true })) // Minify HTML
+    .pipe(gulp.dest(paths.html.dest)) // Output the minified HTML to destination folder
+    .pipe(browserSync.stream()); // Stream changes to BrowserSync
+}
+
+// Serve and watch for file changes
+function serve() {
   browserSync.init({
     server: {
-      baseDir: paths.root
+      baseDir: './dist'
     }
   });
 
-  watch(paths.scss.all, series(cssbuild));
-  watch(
-    [
-      paths.html_master.page,
-      paths.html_master.partial
-    ],
-    series(htmlbuild, htmlformat)
-  );
-  //watch(paths.js, series(jsbuild));
-
-  done();
+  // Watch for changes in SCSS and HTML files
+  gulp.watch(paths.styles.src, styles);
+  gulp.watch(paths.html.src, minifyHTML).on('change', browserSync.reload);
 }
 
-function cssbuild(done) {
-  return src(paths.scss.all)
-    .pipe(sass(sassOptions).on("error", sass.logError))
-    .pipe(autoprefixer())
-    .pipe(dest(paths.dest.css))
-    .pipe(browserSync.reload({ stream: true }))
-    .pipe(
-      csso({
-        restructure: true,
-        sourceMap: false,
-        debug: false
-      })
-    )
-    .pipe(rename({ suffix: ".min" }))
-    .pipe(dest(paths.dest.css))
+// Define Gulp tasks
+exports.styles = styles;
+exports.minifyHTML = minifyHTML;
+exports.serve = serve;
 
-    .pipe(browserSync.reload({ stream: true })); // prompts a reload after compilation
-  done();
-}
-
-function jsbuild(done) {
-  return src([  
-    paths.root_npm+'jquery/dist/jquery.min.js',
-    paths.root_npm+'jquery.easing/jquery.easing.min.js', 
-    paths.root_npm+'uikit/dist/js/uikit.min.js',
-    paths.root_npm+'uikit/dist/js/uikit-icons.min.js',
-    paths.root_npm+'jquery-circle-progress/dist/circle-progress.min.js',
-    paths.root_npm+'typed.js/lib/typed.min.js'
-  ])
-  .pipe(concat("plugins.min.js"))
-  .pipe(dest("src/app/js"))
-  .pipe(uglify())
-  .pipe(dest("src/app/js"))
-  .pipe(browserSync.reload({ stream: true }));
-}
-
-function htmlbuild() {
-  return src([ 
-    paths.html_master.page
-  ])
-    .pipe(
-      fileinclude({
-        prefix: "@@",
-        basepath: "@file",
-        context: {
-          px: "yb",
-          template_name: "lindseykdev",
-          template_desc: "Personal Resume",
-          createdby: "lindsey k",
-          urlauthor: "https://lindseyk.dev"
-        }
-      })
-    )
-    .pipe(dest(paths.root))
-    .pipe(browserSync.reload({ stream: true }));
-}
-
-function htmlformat() {
-  var options =  { "indent_size": 2 };
-  return src([ 
-    paths.html
-  ])
-    .pipe( htmlbeautify(options) )
-    .pipe(dest(paths.root));
-}
- 
-exports.css = series(cssbuild);
-exports.js = series(jsbuild);
-exports.html = series(htmlbuild); 
-exports.htmlformat = series(htmlformat);
-exports.default = series(cssbuild, jsbuild, htmlbuild, htmlformat, browser);
+// Default Gulp task: compile styles, minify HTML, and serve with live-reloading
+exports.default = gulp.series(gulp.parallel(styles, minifyHTML), serve);
